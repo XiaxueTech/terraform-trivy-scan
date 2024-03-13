@@ -10,7 +10,7 @@ on:
       - master
 
 permissions:
-  pull-requests: write - all
+  pull-requests: write
 
 jobs:
   tfsec:
@@ -26,4 +26,4 @@ jobs:
           soft_fail_commenter: true
           working_directory: ''
           tfsec_args: --soft-fail --concise-output --include-passed --minimum-severity MEDIUM
-          github_token: ${{ github.github }}
+          github_token: ${{ github.token }}
