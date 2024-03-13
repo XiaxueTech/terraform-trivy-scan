@@ -1,0 +1,37 @@
+name: Trivy Scan
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+  trivy_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@v1
+        with:
+          scan-type: 'config'
+          format: 'json'
+          output: 'trivy-results.json'
+          severity: 'CRITICAL,HIGH'
+          # Add any additional Trivy options here
+
+      - name: Upload Trivy scan results
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy-scan-results
+          path: trivy-results.json
+          retention-days: 30
+          # Adjust retention days as needed
+
+      - name: Run Terraform PR Commenter
+        uses: XiaxueTech/trivy-terraform-pr-commenter@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_file: trivy-results.json
