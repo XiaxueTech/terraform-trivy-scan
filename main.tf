@@ -16,3 +16,12 @@ resource "aws_security_group_rule" "ingress" {
     cidr_blocks = var.public_cidr_block
     security_group_id = "${aws_security_group.ingress.id}"
 }
+
+resource "aws_security_group_rule" "ingress_test" {
+    type        = "ingress"
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = var.private_cidr_block
+    security_group_id = "${aws_security_group.ingress.id}"
+}
