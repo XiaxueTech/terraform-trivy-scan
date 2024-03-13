@@ -33,7 +33,7 @@ jobs:
         retention-days: 5
 
     - name: Trivy Scan
-      uses: XiaxueTech/trivy-terraform-pr-commenter@master
+      uses: XiaxueTech/trivy-terraform-pr-commenter@v0.1.19
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         working_directory: ''
