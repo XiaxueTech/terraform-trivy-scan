@@ -1,4 +1,4 @@
-data "aws_vpc" "ingress" {
+data "aws_vpc" "vpc" {
     default = true
 }
 
