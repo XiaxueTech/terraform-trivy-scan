@@ -10,7 +10,7 @@ on:
       - master
 
 permissions:
-  pull-requests: write
+  pull-requests: write - all
 
 jobs:
   tfsec:
