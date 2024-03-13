@@ -3,5 +3,5 @@ variable "public_cidr_block" {
 }
 
 variable "private_cidr_block" {
-      default = "10.0.0.0/8"
+      default = "192.168.0.0/16"
 }
