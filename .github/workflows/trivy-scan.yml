@@ -36,4 +36,5 @@ jobs:
       uses: XiaxueTech/trivy-terraform-pr-commenter@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        working_directory: ''
         report_file: trivy-results.json
